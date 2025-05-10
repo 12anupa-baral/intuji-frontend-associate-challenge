@@ -3,17 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
     <title>Intuji Design challenge</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <main class="dashboard-layout">
-        <aside class="sidebar-left">
-            left- sidebar
+        <aside id="sidebar" class="sidebar-left">
+            <div class="sidebar-logo">
+                <img src="https://placehold.co/178x52" alt="Logo" />
+            </div>
+            <div class="sidebar-mobilelogo">
+                <img src="https://placehold.co/52x52" alt="Logo" />
+                <button class="hamburger">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+            <ul>
+                <li>
+                    <i data-lucide="layout-dashboard"></i>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <i data-lucide="calendar-days"></i>
+                    <a href="#">Schedule</a>
+                </li>
+                <li>
+                    <i data-lucide="mail"></i>
+                    <a href="#">Message</a>
+                </li>
+                <li>
+                    <i data-lucide="chart-column"></i>
+                    <a href="#">Analytics</a>
+                </li>
+                <li>
+                    <i data-lucide="users-round"></i>
+                    <a href="#">Team</a>
+                </li>
+                <hr />
+                <li>
+                    <i data-lucide="user-round"></i>
+                    <a href="#">Profile</a>
+                </li>
+                <li>
+                    <i data-lucide="bolt"></i>
+                    <a href="#">Settings</a>
+                </li>
+                <div class="bottom-sidebar-items">
+                    <li>
+                        <i data-lucide="info"></i>
+                        <a href="#">Help</a>
+                    </li>
+                    <li>
+                        <i data-lucide="log-out"></i>
+                        <a href="#">Logout</a>
+                    </li>
+                </div>
+            </ul>
         </aside>
+
+
     
         <header class="dashboard-header">
-            search bar
+            <section class="search-input"></section>
+            <section class="profile"></section>
         </header>
     
         <section class="dashboard-main">
@@ -22,9 +78,16 @@
         </section>
     
         <aside class="sidebar-right">
-            right-sidebar
+        <section class="savingPlan"></section>
+        <section class="recenttransaction"></section>
         </aside>
     </main>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="script.js"></script>
+
     
 </body>
 </html>
