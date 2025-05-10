@@ -84,18 +84,18 @@ body {
   height: 24px;
   stroke-width: 1.5px;
 }
-.sidebar-left li a:active {
+.sidebar-left li:active {
   border-left: 0.3rem solid #4745A4;
   width: 100%;
 }
-.sidebar-left li a:active [data-lucide] {
+.sidebar-left li:active [data-lucide] {
   fill: #F9BA33;
   stroke: #F9BA33;
 }
-.sidebar-left li a:hover a {
+.sidebar-left li:hover a {
   font-weight: 600;
 }
-.sidebar-left li a:hover [data-lucide] {
+.sidebar-left li:hover [data-lucide] {
   fill: #F9BA33;
   stroke: #F9BA33;
 }
@@ -129,9 +129,9 @@ body {
 
 .dashboard-main {
   grid-area: main;
-  padding: 0.5rem;
+  padding: 1rem;
   overflow-y: auto;
-  height: 80vh !important;
+  height: 100vh !important;
 }
 .dashboard-main .search-input {
   background: #FFFFFF;
@@ -144,6 +144,10 @@ body {
   align-items: center;
   margin-bottom: 1rem;
 }
+.dashboard-main .top {
+  display: flex;
+  gap: 1rem;
+}
 .dashboard-main .overview {
   background: #FFFFFF;
   border-radius: 10px;
@@ -151,65 +155,47 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(222, 222, 222, 0.7);
   margin-bottom: 1rem;
-  height: 20rem;
+  height: 25rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 1rem;
 }
-.dashboard-main .overview .income,
-.dashboard-main .overview .expenses,
-.dashboard-main .overview .saving,
-.dashboard-main .overview .balance {
-  background: #FFFFFF;
-  border-radius: 10px;
-  padding: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(222, 222, 222, 0.7);
-  margin-bottom: 1rem;
-  height: 8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .dashboard-main .overview .top {
   display: flex;
   width: 100%;
 }
-.dashboard-main .overview .title {
-  color: black;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
-}
-.dashboard-main .overview .value {
-  color: black;
-  width: 100%;
-  font-family: "Plus Jakarta Sans";
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -2px;
+.dashboard-main .overview .icon {
+  border: 1px solid rgba(222, 222, 222, 0.6980392157);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 1rem 0;
+}
+.dashboard-main .overview hr {
+  margin: 0.5rem 0;
 }
 .dashboard-main .overview .balance {
-  background: #4745A4;
+  background: #FFFFFF;
   border-radius: 10px;
-  padding: 0;
+  padding: 1.25rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(222, 222, 222, 0.7);
-  display: flex;
   flex-direction: column;
+  display: flex;
+}
+.dashboard-main .overview .balance .title {
+  color: #000;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
 }
 .dashboard-main .overview .balance .value {
-  color: #FFF;
+  color: #000;
   width: 100%;
-  font-family: "Plus Jakarta Sans";
   font-size: 28px;
   font-style: normal;
   font-weight: 600;
@@ -220,18 +206,62 @@ body {
   align-items: center;
   padding: 1rem 0;
 }
-.dashboard-main .overview .balance .title {
-  color: #FFF;
+.dashboard-main .overview .balance .description {
+  color: #000;
   font-family: "Plus Jakarta Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.6;
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  padding: 1rem 0;
+}
+.dashboard-main .overview .balance .saving {
+  display: flex;
+  flex-direction: column;
+}
+.dashboard-main .overview .balance.highlight {
+  background: #4745A4;
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(222, 222, 222, 0.7);
+}
+.dashboard-main .overview .balance.highlight .title {
+  color: #fff;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
 }
-.dashboard-main .overview .saving {
+.dashboard-main .overview .balance.highlight .value {
+  color: #fff;
+  width: 100%;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -2px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+.dashboard-main .overview .balance.highlight .description {
+  color: #fff;
+  font-family: "Plus Jakarta Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.6;
   display: flex;
-  flex-direction: column;
+  gap: 0.3rem;
+  align-items: center;
+  padding: 1rem 0;
 }
 @media (min-width: 768px) {
   .dashboard-main .overview .balance {
@@ -245,7 +275,7 @@ body {
   .dashboard-main .overview .balance .balance-heading .balance-title {
     margin-left: 1rem;
   }
-  .dashboard-main .overview .balance .balance-value {
+  .dashboard-main .overview .balance .value {
     font-size: 2rem;
   }
 }

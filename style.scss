@@ -9,6 +9,7 @@ $font: "Plus Jakarta Sans", sans-serif;
 $card-radius: 10px;
 $border: 1px solid rgba(222, 222, 222, 0.70);
 $background: $white;
+$color: black;
 
 // Mixins
 @mixin card($p: $space, $radius: $card-radius, $background: $background) {
@@ -22,6 +23,43 @@ $background: $white;
 @mixin transition($property: all, $duration: 0.3s, $easing: ease) {
     transition: $property $duration $easing;
 }
+
+@mixin title-style($color: $color) {
+    color: $color;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+@mixin value-style($color: $color) {
+    color: $color;
+    width: 100%;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+@mixin desc-style($color: $color) {
+    color: $color;
+    font-family: "Plus Jakarta Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    opacity: 0.6;
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    padding: 1rem 0;
+}
+
 
 // Base Styles
 * {
@@ -124,25 +162,28 @@ body {
                 stroke-width: 1.5px;
             }
 
-            &:active {
-                border-left: 0.3rem solid #4745A4;
-                width: 100%;
 
-                [data-lucide] {
-                    fill: #F9BA33;
-                    stroke: #F9BA33;
-                }
+
+        }
+
+        &:active {
+            border-left: 0.3rem solid #4745A4;
+            width: 100%;
+
+            [data-lucide] {
+                fill: #F9BA33;
+                stroke: #F9BA33;
+            }
+        }
+
+        &:hover {
+            a {
+                font-weight: 600;
             }
 
-            &:hover {
-                a {
-                    font-weight: 600;
-                }
-
-                [data-lucide] {
-                    fill: #F9BA33;
-                    stroke: #F9BA33;
-                }
+            [data-lucide] {
+                fill: #F9BA33;
+                stroke: #F9BA33;
             }
         }
     }
@@ -171,9 +212,9 @@ body {
 
 .dashboard-main {
     grid-area: main;
-    padding: $space/2;
+    padding: $space;
     overflow-y: auto;
-    height: 80vh !important;
+    height: 100vh !important;
 
 
     .search-input {
@@ -185,97 +226,78 @@ body {
 
     }
 
+    .top {
+        display: flex;
+        gap: 1rem;
+    }
+
     .overview {
         @include card($radius);
         margin-bottom: $space;
-        // height: 20rem;
-        height: 20rem;
+        height: 25rem;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         gap: $space;
-
-        .income,
-        .expenses,
-        .saving,
-        .balance {
-            @include card(0, $card-radius);
-            margin-bottom: $space;
-            height: 8rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
 
         .top {
             display: flex;
             width: 100%;
         }
 
-        .title {
-            color: black;
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 24px;
+        .icon {
+            border: 1px solid #DEDEDEB2;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-                .value {
-                    color: black;
-                    width: 100%;
-        
-                    font-family: "Plus Jakarta Sans";
-                    font-size: 28px;
-                    font-style: normal;
-                    font-weight: 600;
-                    line-height: normal;
-                    letter-spacing: -2px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding: 1rem 0;
-        
-                }
-
-
+        hr {
+            margin: 0.5rem 0;
+        }
 
         .balance {
-            @include card(0, $card-radius, #4745A4);
-            display: flex;
+            @include card(1.25rem, $card-radius);
             flex-direction: column;
-
-            .value {
-                color: #FFF;
-                width: 100%;
-
-                font-family: "Plus Jakarta Sans";
-                font-size: 28px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: normal;
-                letter-spacing: -2px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1rem 0;
-
-            }
+            display: flex;
 
             .title {
-                color: #FFF;
-                font-family: "Plus Jakarta Sans";
-                font-size: 18px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 24px;
+                @include title-style(#000);
+            }
+
+            .value {
+                @include value-style(#000);
+            }
+
+            .description {
+                @include desc-style(#000);
+            }
+
+            // Optional: If you still need .saving styles
+            .saving {
+                display: flex;
+                flex-direction: column;
             }
         }
 
-                .saving{
-                    display: flex;
-                    display: flex;
-                        flex-direction: column;
-                }
+        .balance.highlight {
+            @include card(1.25rem, $card-radius, #4745A4);
+
+            .title {
+                @include title-style(#fff);
+            }
+
+            .value {
+                @include value-style(#fff);
+            }
+
+            .description {
+                @include desc-style(#fff);
+            }
+        }
 
         @media (min-width: 768px) {
             .balance {
@@ -291,7 +313,7 @@ body {
                     }
                 }
 
-                .balance-value {
+                .value {
                     font-size: 2rem;
                 }
             }
@@ -302,9 +324,7 @@ body {
                 max-width: 500px;
             }
         }
-
     }
-
 
     .analytics {
         @include card($radius);
@@ -312,6 +332,7 @@ body {
         height: 23rem;
     }
 }
+
 
 @media (min-width: 800px) {
     .sidebar-left {
@@ -333,4 +354,3 @@ body {
         }
     }
 }
-

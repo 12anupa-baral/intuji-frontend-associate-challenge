@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
-        rel="stylesheet">
-    <title>Intuji Design challenge</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intuji Design Challenge</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap"
+        rel="stylesheet" />
 </head>
 
 <body>
@@ -25,91 +25,24 @@
                 </button>
             </div>
             <ul>
-                <li>
-                    <i data-lucide="layout-dashboard"></i>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <i data-lucide="calendar-days"></i>
-                    <a href="#">Schedule</a>
-                </li>
-                <li>
-                    <i data-lucide="mail"></i>
-                    <a href="#">Message</a>
-                </li>
-                <li>
-                    <i data-lucide="chart-column"></i>
-                    <a href="#">Analytics</a>
-                </li>
-                <li>
-                    <i data-lucide="users-round"></i>
-                    <a href="#">Team</a>
-                </li>
+                <li><i data-lucide="layout-dashboard"></i><a href="#">Dashboard</a></li>
+                <li><i data-lucide="calendar-days"></i><a href="#">Schedule</a></li>
+                <li><i data-lucide="mail"></i><a href="#">Message</a></li>
+                <li><i data-lucide="chart-column"></i><a href="#">Analytics</a></li>
+                <li><i data-lucide="users-round"></i><a href="#">Team</a></li>
                 <hr />
-                <li>
-                    <i data-lucide="user-round"></i>
-                    <a href="#">Profile</a>
-                </li>
-                <li>
-                    <i data-lucide="bolt"></i>
-                    <a href="#">Settings</a>
-                </li>
+                <li><i data-lucide="user-round"></i><a href="#">Profile</a></li>
+                <li><i data-lucide="bolt"></i><a href="#">Settings</a></li>
                 <div class="bottom-sidebar-items">
-                    <li>
-                        <i data-lucide="info"></i>
-                        <a href="#">Help</a>
-                    </li>
-                    <li>
-                        <i data-lucide="log-out"></i>
-                        <a href="#">Logout</a>
-                    </li>
+                    <li><i data-lucide="info"></i><a href="#">Help</a></li>
+                    <li><i data-lucide="log-out"></i><a href="#">Logout</a></li>
                 </div>
             </ul>
         </aside>
 
         <section class="dashboard-main">
             <section class="search-input">search</section>
-            <div class="overview">
-                <div class="balance">
-                    <div class="top">
-                        <div class="icon">
-                            <img src="assets/empty-wallet.svg" alt="icon">
-                        </div>
-                        <div class="text">
-                        <div class="title">Your Balance</div>
-                        <div class="description">15 % compared with last month</div>
-                    </div>
-                </div>
-                   
-                    <hr>
-                    <div class="value">
-                    <div >$28,891.138</div>
-                    <i data-lucide="arrow-right"></i>
-                </div>
-
-                </div>
-                <div class="saving">
-                    <div class="top">
-                        <div class="icon">
-                            <img src="assets/save.svg" alt="icon">
-                        </div>
-                        <div class="text">
-                            <div class="title">Your Balance</div>
-                            <div class="description">15 % compared with last month</div>
-                        </div>
-                    </div>
-                    
-                    <hr>
-                    <div class="value">
-                        <div>$28,891.138</div>
-                        <i data-lucide="arrow-right"></i>
-                    </div>
-                </div>
-                <div class="expenses">expense</div>
-                <div class="income">income</div>
-                </div>
-              
-            </div>
+            <div class="overview" id="overview"></div>
             <div class="analytics">Analytics</div>
         </section>
 
@@ -120,10 +53,8 @@
         </aside>
     </main>
 
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        lucide.createIcons();
-    </script>
     <script src="script.js"></script>
 </body>
 
