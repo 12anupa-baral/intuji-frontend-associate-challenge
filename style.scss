@@ -3,15 +3,20 @@ $white: #FFFFFF;
 $light-gray: #F7F7FB;
 $shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 $radius: 10px;
+$rounded-radius: 100px;
 $space: 1rem;
 $font: "Plus Jakarta Sans", sans-serif;
+$card-radius: 10px;
+$border: 1px solid rgba(222, 222, 222, 0.70);
+$background: $white;
 
 // Mixins
-@mixin card($p: $space) {
-    background: $white;
+@mixin card($p: $space, $radius: $card-radius, $background: $background) {
+    background: $background;
     border-radius: $radius;
     padding: $p;
     box-shadow: $shadow;
+    border: $border
 }
 
 @mixin transition($property: all, $duration: 0.3s, $easing: ease) {
@@ -41,54 +46,28 @@ body {
 
     @media (min-width: 800px) {
         grid-template:
-            "left header right" auto
-            "left main   right" 1fr / 240px 1fr 300px;
+            "left header header " auto
+            "left main   right" 1fr / 280px 1fr 347px;
     }
 }
 
 // Components
-.dashboard-header {
-    // grid-area: header;
-    display: flex;
-    margin-top: $space;
-    align-items: center;
-    justify-content: space-between;
 
-    .search-input {
-        @include card(0.75rem);
-        display: flex;
-        width: 722px;
-        height: 64px;
-        padding: 13px 20px;
-        align-items: center;
-        gap: 10px;
-        flex-shrink: 0;
-    }
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 90;
+    display: none;
 
-    .profile {
-        display: flex;
-        width: 350px;
-        padding: 8px;
-        align-items: center;
-        gap: 10px;
-        @include card(0.75rem);
-    }
-
-    .sidebar-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 90;
-        display: none;
-
-        &.active {
-            display: block;
-        }
+    &.active {
+        display: block;
     }
 }
+
 
 .sidebar-left {
     grid-area: left;
@@ -173,10 +152,19 @@ body {
     grid-area: right;
     margin-top: $space;
 
+    .profile {
+        display: flex;
+        width: 350px;
+        padding: 8px;
+        align-items: center;
+        gap: 10px;
+        @include card(0.75rem, $rounded-radius);
+    }
+
     .recenttransaction,
     .savingPlan {
-        @include card(0);
-        height: 25rem;
+        @include card(0, $radius);
+        height: 20rem;
         padding: $space/2;
     }
 }
@@ -185,12 +173,143 @@ body {
     grid-area: main;
     padding: $space/2;
     overflow-y: auto;
+    height: 80vh !important;
 
-    .overview,
-    .analytics {
-        @include card;
+
+    .search-input {
+        @include card(0.75rem, $rounded-radius);
+        display: flex;
+        height: 4rem;
+        align-items: center;
+        margin-bottom: 1rem;
+
+    }
+
+    .overview {
+        @include card($radius);
         margin-bottom: $space;
+        // height: 20rem;
         height: 20rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: $space;
+
+        .income,
+        .expenses,
+        .saving,
+        .balance {
+            @include card(0, $card-radius);
+            margin-bottom: $space;
+            height: 8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .top {
+            display: flex;
+            width: 100%;
+        }
+
+        .title {
+            color: black;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 24px;
+        }
+
+                .value {
+                    color: black;
+                    width: 100%;
+        
+                    font-family: "Plus Jakarta Sans";
+                    font-size: 28px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                    letter-spacing: -2px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 1rem 0;
+        
+                }
+
+
+
+        .balance {
+            @include card(0, $card-radius, #4745A4);
+            display: flex;
+            flex-direction: column;
+
+            .value {
+                color: #FFF;
+                width: 100%;
+
+                font-family: "Plus Jakarta Sans";
+                font-size: 28px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                letter-spacing: -2px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 0;
+
+            }
+
+            .title {
+                color: #FFF;
+                font-family: "Plus Jakarta Sans";
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 24px;
+            }
+        }
+
+                .saving{
+                    display: flex;
+                    display: flex;
+                        flex-direction: column;
+                }
+
+        @media (min-width: 768px) {
+            .balance {
+                padding: 1.5rem;
+                max-width: 400px;
+
+                .balance-heading {
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    .balance-title {
+                        margin-left: 1rem;
+                    }
+                }
+
+                .balance-value {
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .balance {
+                max-width: 500px;
+            }
+        }
+
+    }
+
+
+    .analytics {
+        @include card($radius);
+        margin-bottom: $space;
+        height: 23rem;
     }
 }
 
@@ -214,3 +333,4 @@ body {
         }
     }
 }
+
