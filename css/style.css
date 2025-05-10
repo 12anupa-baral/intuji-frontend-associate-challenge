@@ -127,12 +127,63 @@ body {
   border: 1px solid rgba(222, 222, 222, 0.7);
   margin-bottom: 1rem;
 }
-.dashboard-main .overview {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+.dashboard-main .overview-container {
+  background: white;
+  padding: 1rem;
+  border-radius: 14px;
 }
-.dashboard-main .overview .balance {
+.dashboard-main .overview-container .overview-header {
+  color: #0D163A;
+  font-feature-settings: "liga" off, "clig" off;
+  font-family: "Plus Jakarta Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -1px;
+  padding-bottom: 0.5rem;
+}
+.dashboard-main .overview-container .overview {
+  display: grid;
+  background: white;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  border-radius: 14px;
+}
+.dashboard-main .overview-container .overview .title {
+  color: black;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+.dashboard-main .overview-container .overview .value {
+  color: black;
+  width: 100%;
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0 0 0;
+}
+.dashboard-main .overview-container .overview .description {
+  color: #000;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.6;
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  padding: 1rem 0;
+}
+.dashboard-main .overview-container .overview .balance {
   background: #FFFFFF;
   border-radius: 10px;
   padding: 1rem;
@@ -141,83 +192,35 @@ body {
   flex-direction: column;
   display: flex;
 }
-.dashboard-main .overview .balance .title {
-  color: #000;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
-}
-.dashboard-main .overview .balance .value {
-  color: #000;
-  width: 100%;
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -2px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-}
-.dashboard-main .overview .balance .description {
-  color: #000;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  opacity: 0.6;
-  display: flex;
-  gap: 0.3rem;
-  align-items: center;
-  padding: 1rem 0;
-}
-.dashboard-main .overview .balance .top {
+.dashboard-main .overview-container .overview .balance .top {
   display: flex;
   width: 100%;
   gap: 1rem;
 }
-.dashboard-main .overview .balance.highlight {
+.dashboard-main .overview-container .overview .balance .icon {
+  border: 1px solid rgba(222, 222, 222, 0.6980392157);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashboard-main .overview-container .overview .balance.highlight {
   background: #4745A4;
   border-radius: 10px;
   padding: 1.25rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(222, 222, 222, 0.7);
 }
-.dashboard-main .overview .balance.highlight .title {
-  color: #fff;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
+.dashboard-main .overview-container .overview .balance.highlight .title {
+  color: white;
 }
-.dashboard-main .overview .balance.highlight .value {
-  color: #fff;
-  width: 100%;
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -2px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
+.dashboard-main .overview-container .overview .balance.highlight .value {
+  color: #FFFFFF;
 }
-.dashboard-main .overview .balance.highlight .description {
-  color: #fff;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  opacity: 0.6;
-  display: flex;
-  gap: 0.3rem;
-  align-items: center;
-  padding: 1rem 0;
+.dashboard-main .overview-container .overview .balance.highlight .description {
+  color: #FFFFFF;
 }
 .dashboard-main .analytics {
   background: #FFFFFF;
@@ -252,6 +255,73 @@ body {
   border: 1px solid rgba(222, 222, 222, 0.7);
   margin: 1rem 0;
   min-height: 200px;
+}
+.sidebar-right .recenttransaction .trans-header {
+  display: flex;
+  justify-content: space-between;
+}
+.sidebar-right .recenttransaction .trans-header .trans-title {
+  color: #0D163A;
+  font-feature-settings: "liga" off, "clig" off;
+  font-family: "Plus Jakarta Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -1px;
+}
+.sidebar-right .recenttransaction .trans-item {
+  display: flex;
+  padding: 1.25rem 0;
+  gap: 0.5rem;
+}
+.sidebar-right .recenttransaction .trans-icon img {
+  border-radius: 100%;
+}
+.sidebar-right .savingPlan .plan-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(222, 222, 222, 0.6980392157);
+  padding: 1rem 0;
+}
+.sidebar-right .savingPlan .plan-header .plan-title {
+  color: #0D163A;
+  font-feature-settings: "liga" off, "clig" off;
+  font-family: "Plus Jakarta Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -1px;
+}
+.sidebar-right .savingPlan .plan-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  gap: 0.5rem;
+}
+.sidebar-right .savingPlan .progress {
+  background-color: #d8d8d8;
+  border-radius: 20px;
+  position: relative;
+  margin: 1rempx 0;
+  height: 0.5rem;
+  width: 18rem;
+}
+.sidebar-right .savingPlan .progress-percentage {
+  color: black;
+}
+.sidebar-right .savingPlan .progress-done {
+  background: red;
+  border-radius: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 0;
+  opacity: 0;
+  transition: 1s ease 0.3s;
 }
 
 @media (max-width: 599px) {
