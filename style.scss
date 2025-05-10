@@ -11,13 +11,13 @@ $border: 1px solid rgba(222, 222, 222, 0.70);
 $background: $white;
 $color: black;
 
-// Mixins
+// Mixins (remain unchanged)
 @mixin card($p: $space, $radius: $card-radius, $background: $background) {
     background: $background;
     border-radius: $radius;
     padding: $p;
     box-shadow: $shadow;
-    border: $border
+    border: $border;
 }
 
 @mixin transition($property: all, $duration: 0.3s, $easing: ease) {
@@ -48,7 +48,7 @@ $color: black;
 
 @mixin desc-style($color: $color) {
     color: $color;
-    font-family: "Plus Jakarta Sans";
+    font-family: $font;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
@@ -60,8 +60,7 @@ $color: black;
     padding: 1rem 0;
 }
 
-
-// Base Styles
+// Base Styles (remain unchanged)
 * {
     margin: 0;
     padding: 0;
@@ -71,286 +70,233 @@ $color: black;
 
 body {
     background: $light-gray;
-    font-family: sans-serif;
 }
 
+// Responsive Dashboard Layout
 .dashboard-layout {
     display: grid;
-    height: 100vh;
-    background: $light-gray;
+    min-height: 100vh;
     gap: $space;
     grid-template:
-        "left header" auto "left main" 1fr "left right" auto / fit-content(240px) 1fr;
+        "left header" auto
+        "left main" 1fr
+        "left right" auto / 60px 1fr;
+
+    @media (min-width: 600px) {
+        grid-template-columns: 200px 1fr;
+    }
 
     @media (min-width: 800px) {
         grid-template:
-            "left header header " auto
-            "left main   right" 1fr / 280px 1fr 347px;
+            "left header header" auto
+            "left main right" 1fr / 280px 1fr minmax(300px, 347px);
+    }
+
+    @media (min-width: 1200px) {
+        grid-template-columns: 280px 1fr 347px;
     }
 }
 
-// Components
-
-.sidebar-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 90;
-    display: none;
-
-    &.active {
-        display: block;
-    }
-}
-
-
+// Enhanced Sidebar Components
 .sidebar-left {
     grid-area: left;
     background: $white;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    z-index: 1000;
 
     ul {
-        padding: 2rem 0;
+        padding: 1rem 0;
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
 
         hr {
-            margin: 2rem 1rem;
-        }
-
-        .bottom-sidebar-items {
-            bottom: 1rem;
-            position: absolute;
+            margin: 1rem;
+            opacity: 0.1;
         }
     }
 
     .sidebar-items {
-        padding: 1rem 1.5rem;
+        padding: 0.5rem;
+
+        @media (min-width: 800px) {
+            padding: 1rem 1.5rem;
+        }
     }
 
     .sidebar-logo {
-        padding: 2rem;
+        padding: 1rem;
         display: none;
 
+        @media (min-width: 800px) {
+            display: block;
+            padding: 2rem;
+        }
     }
 
     .sidebar-mobilelogo {
+        padding: 1rem 0;
         display: flex;
         justify-content: center;
-        gap: 0.1rem;
-        background-color: white;
+
+        @media (min-width: 800px) {
+            display: none;
+        }
     }
 
     li {
+        padding: 0.75rem;
         display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem 2rem;
+        gap:1rem;
+        justify-content: center;
+        border-left: 3px solid transparent;
+        cursor: pointer;
+
+        @media (min-width: 800px) {
+            justify-content: flex-start;
+            padding: 1rem 2rem;
+        }
 
         a {
-            color: #0D163A;
-            font-size: 16px;
-            font-weight: 400;
-            text-decoration: none;
             display: none;
+            color: #0D163A;
+            text-decoration: none;
 
-            [data-lucide] {
-                width: 24px;
-                height: 24px;
-                stroke-width: 1.5px;
+            @media (min-width: 800px) {
+                display: block;
+                font-size: 15px;
             }
-
-
-
         }
 
+        &:hover,
         &:active {
-            border-left: 0.3rem solid #4745A4;
-            width: 100%;
+            border-left-color: #4745A4;
 
             [data-lucide] {
-                fill: #F9BA33;
                 stroke: #F9BA33;
             }
+            font-weight: 600;
         }
 
-        &:hover {
-            a {
-                font-weight: 600;
-            }
-
-            [data-lucide] {
-                fill: #F9BA33;
-                stroke: #F9BA33;
-            }
+        [data-lucide] {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
         }
+    }
+
+    
+}
+
+// Optimized Main Content
+.dashboard-main {
+    grid-area: main;
+    padding: $space;
+    overflow-x: hidden;
+
+    .search-input {
+        @include card(0.75rem, $rounded-radius);
+        margin-bottom: $space;
+    }
+
+    .overview {
+        display: grid;
+        gap: $space;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+                .balance {
+
+                                @include card(1rem, $card-radius);
+                                flex-direction: column;
+                                display: flex;
+        
+                                .title {
+                                    @include title-style(#000);
+                                }
+        
+                                .value {
+                                    @include value-style(#000);
+                                }
+        
+                                .description {
+                                    @include desc-style(#000);
+                                }
+
+                                                                .top {
+                                                                                display: flex;
+                                                                                width: 100%;
+                                                                                gap: 1rem
+                                                                            }
+        
+                            }
+        
+                            .balance.highlight {
+                                @include card(1.25rem, $card-radius, #4745A4);
+        
+                                .title {
+                                    @include title-style(#fff);
+                                }
+        
+                                .value {
+                                    @include value-style(#fff);
+                                }
+        
+                                .description {
+                                    @include desc-style(#fff);
+                                }
+                            }
+    }
+
+    .analytics {
+        @include card();
+        margin: $space 0;
+        min-height: 300px;
     }
 }
 
+// Responsive Right Sidebar
 .sidebar-right {
     grid-area: right;
-    margin-top: $space;
+    padding: $space;
 
     .profile {
-        display: flex;
-        width: 350px;
-        padding: 8px;
-        align-items: center;
-        gap: 10px;
         @include card(0.75rem, $rounded-radius);
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
     }
 
     .recenttransaction,
     .savingPlan {
-        @include card(0, $radius);
-        height: 20rem;
-        padding: $space/2;
+        @include card();
+        margin: $space 0;
+        min-height: 200px;
     }
 }
 
-.dashboard-main {
-    grid-area: main;
-    padding: $space;
-    overflow-y: auto;
-    height: 100vh !important;
-
-
-    .search-input {
-        @include card(0.75rem, $rounded-radius);
-        display: flex;
-        height: 4rem;
-        align-items: center;
-        margin-bottom: 1rem;
-
+// Mobile Optimization
+@media (max-width: 599px) {
+    .dashboard-layout {
+        grid-template-rows: auto 1fr auto;
     }
 
-    .top {
-        display: flex;
-        gap: 1rem;
+    .sidebar-right {
+        padding: $space 0;
     }
 
-    .overview {
-        @include card($radius);
-        margin-bottom: $space;
-        height: 25rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        gap: $space;
-
-        .top {
-            display: flex;
-            width: 100%;
-        }
-
-        .icon {
-            border: 1px solid #DEDEDEB2;
-            border-radius: 50%;
-            width: 3rem;
-            height: 3rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        hr {
-            margin: 0.5rem 0;
-        }
-
-        .balance {
-            @include card(1.25rem, $card-radius);
-            flex-direction: column;
-            display: flex;
-
-            .title {
-                @include title-style(#000);
-            }
-
-            .value {
-                @include value-style(#000);
-            }
-
-            .description {
-                @include desc-style(#000);
-            }
-
-            // Optional: If you still need .saving styles
-            .saving {
-                display: flex;
-                flex-direction: column;
-            }
-        }
-
-        .balance.highlight {
-            @include card(1.25rem, $card-radius, #4745A4);
-
-            .title {
-                @include title-style(#fff);
-            }
-
-            .value {
-                @include value-style(#fff);
-            }
-
-            .description {
-                @include desc-style(#fff);
-            }
-        }
-
-        @media (min-width: 768px) {
-            .balance {
-                padding: 1.5rem;
-                max-width: 400px;
-
-                .balance-heading {
-                    flex-direction: row;
-                    justify-content: space-between;
-
-                    .balance-title {
-                        margin-left: 1rem;
-                    }
-                }
-
-                .value {
-                    font-size: 2rem;
-                }
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .balance {
-                max-width: 500px;
-            }
-        }
-    }
-
-    .analytics {
-        @include card($radius);
-        margin-bottom: $space;
-        height: 23rem;
+    .value-style {
+        font-size: 24px;
+        letter-spacing: -1px;
     }
 }
 
+@media (max-width: 400px) {
+    .dashboard-main {
+        padding: $space 0.5rem;
+    }
 
-@media (min-width: 800px) {
-    .sidebar-left {
-        .sidebar-logo {
-            padding: 2rem;
-            display: block;
-        }
-
-        .sidebar-mobilelogo {
-            display: none;
-        }
-
-        ul li a {
-            display: block;
-        }
-
-        .hamburger {
-            display: none;
-        }
+    .card {
+        padding: 0.75rem;
     }
 }
