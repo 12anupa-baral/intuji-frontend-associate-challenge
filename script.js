@@ -62,24 +62,27 @@ const transactionData = [
 const savingplanData = [
   {
     Plan: "Bali Vacation",
-    date: "August 20, 2022",
+    date: "August 25 2022",
     percentage: 48,
     totalamount: "$ 1,950.21",
     baseamount: "/ $ 4000",
+    color: "#4745A4",
   },
   {
-    Plan: "New Bike",
-    date: "August 21, 2022",
-    percentage: 70,
+    Plan: "New Gadget",
+    date: "August 25 2022",
+    percentage: 79,
     totalamount: "$ 2,800.00",
-    baseamount: "/ $ 4000",
+    baseamount: "/ $ 1000",
+    color: "#F9BA33",
   },
   {
-    Plan: "Emergency Fund",
-    date: "August 22, 2022",
-    percentage: 30,
+    Plan: "Charity",
+    date: "August 25 2022",
+    percentage: 32,
     totalamount: "$ 1,200.00",
-    baseamount: "/ $ 4000",
+    baseamount: "/ $ 100",
+    color: "#3BBB6E",
   },
 ];
 
@@ -129,6 +132,7 @@ transactionData.forEach((data) => {
   item.className = "trans-item";
 
   item.innerHTML = `
+  <div class="trans-left">
     <div class="trans-icon">
       <img src="https://placehold.co/48x48" alt="${data.method}" />
     </div>
@@ -136,7 +140,9 @@ transactionData.forEach((data) => {
       <h5 class="tran-method">${data.method}</h5>
       <p class="tran-date">${data.date}</p>
     </div>
-    <div class="trans-status">
+    </div>
+
+    <div class="trans-stat">
       <span class="tran-amount">${data.amount}</span>
       <span class="tran-status">${data.status}</span>
     </div>
@@ -160,30 +166,34 @@ savingplanData.forEach((data) => {
   item.className = "plan-item";
 
   item.innerHTML = `
-  <div class="plan-items">
+<div class="plan-items">
     <div class="plan-detail">
-      <h5 class="plan-name">${data.Plan}</h5>
-      <p class="tran-date">${data.date}</p>
+        <h5 class="plan-name">${data.Plan}</h5>
+        <p class="plan-date">${data.date}</p>
     </div>
-    <div class="trans-a">
-      <span class="plan-totalamount">${data.totalamount}</span>
-      <span class="plan-baseamount">${data.baseamount}</span>
+    <div class="plan-stats">
+        <div class="plan-amount">
+            <span class="plan-totalamount">${data.totalamount}</span>
+            <span class="plan-baseamount">${data.baseamount}</span>
+        </div>
+        <div class="progress-percentage">${data.percentage} %</div>
     </div>
-    </div>
-    <div class="progress">
-      <div class="progress-done" data-done="${data.percentage}">
-   
-      </div>
-    </div>
+</div>
+
+<div class="progress">
+    <div class="progress-done" data-done="${data.percentage}"></div>
+</div>
   `;
 
   savingPlan.appendChild(item);
-
+  const progressPercentage = item.querySelector(".progress-percentage");
+  progressPercentage.style.color = `${data.color}`;
 
   const progressDone = item.querySelector(".progress-done");
   const done = progressDone.getAttribute("data-done");
   progressDone.style.width = done + "%";
   progressDone.style.opacity = 1;
+  progressDone.style.background = `${data.color}`;
 });
 
 // === Initialize Lucide Icons ===

@@ -133,14 +133,12 @@ body {
   border-radius: 14px;
 }
 .dashboard-main .overview-container .overview-header {
-  color: #0D163A;
-  font-feature-settings: "liga" off, "clig" off;
-  font-family: "Plus Jakarta Sans";
-  font-size: 20px;
-  font-style: normal;
+  color: black;
+  font-size: 1.25rem;
   font-weight: 700;
-  line-height: normal;
   letter-spacing: -1px;
+  opacity: 1;
+  line-height: normal;
   padding-bottom: 0.5rem;
 }
 .dashboard-main .overview-container .overview {
@@ -171,13 +169,12 @@ body {
   padding: 1rem 0 0 0;
 }
 .dashboard-main .overview-container .overview .description {
-  color: #000;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 12px;
-  font-style: normal;
+  color: black;
+  font-size: 0.75rem;
   font-weight: 400;
-  line-height: normal;
+  letter-spacing: -1px;
   opacity: 0.6;
+  line-height: normal;
   display: flex;
   gap: 0.3rem;
   align-items: center;
@@ -259,24 +256,67 @@ body {
 .sidebar-right .recenttransaction .trans-header {
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid rgba(222, 222, 222, 0.7);
+  padding: 1rem 0;
 }
 .sidebar-right .recenttransaction .trans-header .trans-title {
-  color: #0D163A;
-  font-feature-settings: "liga" off, "clig" off;
-  font-family: "Plus Jakarta Sans";
-  font-size: 20px;
-  font-style: normal;
+  color: black;
+  font-size: 1.25rem;
   font-weight: 700;
-  line-height: normal;
   letter-spacing: -1px;
+  opacity: 1;
+  line-height: normal;
+}
+.sidebar-right .recenttransaction .tran-date {
+  color: black;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+  opacity: 0.5;
+  line-height: normal;
+}
+.sidebar-right .recenttransaction .tran-method, .sidebar-right .recenttransaction .tran-amount {
+  color: black;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+  opacity: 1;
+  line-height: 1.5rem;
 }
 .sidebar-right .recenttransaction .trans-item {
   display: flex;
   padding: 1.25rem 0;
-  gap: 0.5rem;
+  justify-content: space-between;
 }
 .sidebar-right .recenttransaction .trans-icon img {
   border-radius: 100%;
+}
+.sidebar-right .recenttransaction .trans-stat {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-right .recenttransaction .trans-left {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.sidebar-right .recenttransaction .tran-status {
+  color: #3BBB6E;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+  opacity: 1;
+  line-height: normal;
+}
+.sidebar-right .recenttransaction .view-transaction {
+  color: #4745A4;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -1px;
+  opacity: 1;
+  line-height: 1.5rem;
+  border: none;
+  background-color: white !important;
 }
 .sidebar-right .savingPlan .plan-header {
   display: flex;
@@ -285,20 +325,64 @@ body {
   padding: 1rem 0;
 }
 .sidebar-right .savingPlan .plan-header .plan-title {
-  color: #0D163A;
-  font-feature-settings: "liga" off, "clig" off;
-  font-family: "Plus Jakarta Sans";
-  font-size: 20px;
-  font-style: normal;
+  color: black;
+  font-size: 1.25rem;
   font-weight: 700;
-  line-height: normal;
   letter-spacing: -1px;
+  opacity: 1;
+  line-height: normal;
+}
+.sidebar-right .savingPlan .plan-name {
+  color: black;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -1px;
+  opacity: 1;
+  line-height: 1.5rem;
+}
+.sidebar-right .savingPlan .view-plan {
+  color: #4745A4;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -1px;
+  opacity: 1;
+  line-height: 1.5rem;
+  border: none;
+  background-color: white !important;
+}
+.sidebar-right .savingPlan .plan-stats {
+  display: flex;
+  justify-content: space-between;
 }
 .sidebar-right .savingPlan .plan-detail {
   display: flex;
   justify-content: space-between;
   padding: 1rem 0;
   gap: 0.5rem;
+}
+.sidebar-right .savingPlan .plan-date {
+  color: black;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: -1px;
+  opacity: 0.5;
+  line-height: normal;
+}
+.sidebar-right .savingPlan .plan-baseamount {
+  color: black;
+  font-size: 0.75;
+  font-weight: 600;
+  letter-spacing: -1px;
+  opacity: 0.5;
+  line-height: normal;
+}
+.sidebar-right .savingPlan .plan-totalamount {
+  color: black;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+  opacity: 1;
+  line-height: normal;
 }
 .sidebar-right .savingPlan .progress {
   background-color: #d8d8d8;
@@ -307,12 +391,17 @@ body {
   margin: 1rempx 0;
   height: 0.5rem;
   width: 18rem;
+  margin: 0.5rem 0;
 }
 .sidebar-right .savingPlan .progress-percentage {
   color: black;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+  opacity: 1;
+  line-height: normal;
 }
 .sidebar-right .savingPlan .progress-done {
-  background: red;
   border-radius: 20px;
   color: #fff;
   display: flex;

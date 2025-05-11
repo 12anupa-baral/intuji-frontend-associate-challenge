@@ -10,6 +10,10 @@ $card-radius: 10px;
 $border: 1px solid rgba(222, 222, 222, 0.70);
 $background: $white;
 $color: black;
+$opacity: 1;
+$font-weight: 400;
+$font-size: 0.75rem;
+$line-height: normal;
 
 // Mixins (remain unchanged)
 @mixin card($p: $space, $radius: $card-radius, $background: $background) {
@@ -24,15 +28,19 @@ $color: black;
     transition: $property $duration $easing;
 }
 
-@mixin sub-title() {
-    color: #0D163A;
-    font-feature-settings: 'liga' off, 'clig' off;
-    font-family: "Plus Jakarta Sans";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+@mixin text-style($color: $color, $opacity: $opacity, $weight: $font-weight, $size: $font-size , $line-height: $line-height) {
+    color: $color;
+    font-size: $size;
+    font-weight: $weight;
     letter-spacing: -1px;
+    opacity: $opacity;
+    line-height: $line-height
+}
+
+@mixin seeallbtn() {
+    @include text-style(#4745A4, 1, 500, 1rem, 1.5rem);
+    border: none;
+    background-color: white !important;
 }
 
 
@@ -73,7 +81,7 @@ body {
     }
 }
 
-// Enhanced Sidebar Components
+//Sidebar Components
 .sidebar-left {
     grid-area: left;
     background: $white;
@@ -166,7 +174,7 @@ body {
 
 }
 
-// Optimized Main Content
+// Main Content
 .dashboard-main {
     grid-area: main;
     padding: $space;
@@ -183,7 +191,7 @@ body {
         border-radius: 14px;
 
         .overview-header {
-            @include sub-title();
+            @include text-style($color, 1, 700, 1.25rem);
             padding-bottom: 0.5rem;
         }
 
@@ -218,13 +226,7 @@ body {
             }
 
             .description {
-                color: #000;
-                font-family: $font;
-                font-size: 12px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-                opacity: 0.6;
+                @include text-style($color, 0.6, $font-weight );
                 display: flex;
                 gap: 0.3rem;
                 align-items: center;
@@ -282,7 +284,7 @@ body {
     }
 }
 
-// Responsive Right Sidebar
+// Right Sidebar
 .sidebar-right {
     grid-area: right;
     padding: $space;
@@ -307,22 +309,51 @@ body {
         .trans-header {
             display: flex;
             justify-content: space-between;
+            border-bottom: $border;
+            padding: 1rem 0;
 
             .trans-title {
-                @include sub-title()
+                @include text-style($color, 1, 700, 1.25rem);
             }
         }
 
+        .tran-date {
+            @include text-style($color, 0.5, 600)
+        }
 
+        .tran-method, .tran-amount {
+            @include text-style($color, 1, 600, 1.125rem, 1.5rem)
+        }
 
         .trans-item {
             display: flex;
             padding: 1.25rem 0;
-            gap: 0.5rem;
+            justify-content: space-between;
         }
 
         .trans-icon img {
             border-radius: 100%;
+        }
+
+        .trans-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .trans-left {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem
+        }
+
+        .tran-status {
+            @include text-style(#3BBB6E, 1, 600, 0.75rem, $line-height)
+        }
+
+
+
+        .view-transaction {
+            @include seeallbtn()
         }
     }
 
@@ -334,10 +365,22 @@ body {
             padding: 1rem 0;
 
             .plan-title {
-                @include sub-title()
+                @include text-style($color, 1, 700, 1.25rem);
             }
         }
 
+        .plan-name {
+            @include text-style($color, 1, 500, 1rem, 1.5rem)
+        }
+
+        .view-plan {
+            @include seeallbtn()
+        }
+
+        .plan-stats {
+            display: flex;
+            justify-content: space-between;
+        }
 
 
         .plan-detail {
@@ -345,6 +388,18 @@ body {
             justify-content: space-between;
             padding: 1rem 0;
             gap: 0.5rem;
+        }
+
+        .plan-date {
+            @include text-style($color, 0.5)
+        }
+
+        .plan-baseamount {
+            @include text-style($color, 0.5, 600, 0.75, $line-height)
+        }
+
+        .plan-totalamount {
+            @include text-style($color, 1, 600, 1.25rem, $line-height);
         }
 
 
@@ -356,26 +411,29 @@ body {
             margin: 1rempx 0;
             height: 0.5rem;
             width: 18rem;
-        
-        }
-        .progress-percentage{
-            color:black
+            margin: 0.5rem 0;
+
         }
 
-                .progress-done {
-                    background: red;
-                    border-radius: 20px;
-                    color: #fff;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    height: 100%;
-                    width: 0;
-                    opacity: 0;
-                    transition: 1s ease 0.3s;   }
+        .progress-percentage {
+            @include text-style($color, 1, 600, 1.125rem, $line-height)
+        }
+
+        .progress-done {
+
+            border-radius: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 0;
+            opacity: 0;
+            transition: 1s ease 0.3s;
+        }
     }
 
-   
+
 }
 
 // Mobile Optimization
