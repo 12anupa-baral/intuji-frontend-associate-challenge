@@ -20,7 +20,7 @@ project/
 └── assets/
 ```
 
-## ⚙ Technologies Used
+## Technologies Used
 
 - **HTML5** – Markup structure
 - **SASS / CSS3** – Styling and responsive layout
