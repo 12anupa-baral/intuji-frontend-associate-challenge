@@ -1,3 +1,39 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes progress {
+  from {
+    width: 0;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -38,6 +74,7 @@ body {
   top: 0;
   height: 100vh;
   z-index: 1000;
+  animation: slideInRight 0.5s ease-out;
 }
 .sidebar-left ul {
   padding: 1rem 0;
@@ -83,6 +120,7 @@ body {
   justify-content: center;
   border-left: 3px solid transparent;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media (min-width: 600px) {
   .sidebar-left li {
@@ -101,17 +139,20 @@ body {
     font-size: 15px;
   }
 }
-.sidebar-left li:hover, .sidebar-left li:active {
+.sidebar-left li:hover {
+  transform: translateX(5px);
   border-left-color: #4745A4;
   font-weight: 600;
 }
-.sidebar-left li:hover [data-lucide], .sidebar-left li:active [data-lucide] {
+.sidebar-left li:hover [data-lucide] {
+  transform: scale(1.1);
   stroke: #F9BA33;
 }
 .sidebar-left li [data-lucide] {
   width: 24px;
   height: 24px;
   flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .sidebar-left .bottom-sidebar-items {
   bottom: 1rem;
@@ -122,6 +163,7 @@ body {
   grid-area: main;
   padding: 1rem;
   overflow-x: hidden;
+  animation: fadeIn 0.5s ease-in;
 }
 .dashboard-main .searchbar {
   position: relative;
@@ -132,6 +174,7 @@ body {
   padding: 0.75rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(222, 222, 222, 0.7);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: #667085;
   font-size: 1rem;
   font-weight: 400;
@@ -141,6 +184,11 @@ body {
   margin-bottom: 1rem;
   width: 100%;
   padding: 1rem 3rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dashboard-main .searchbar .search-input:focus {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .dashboard-main .searchbar #search-icon {
   position: absolute;
@@ -153,9 +201,13 @@ body {
   margin-left: 1rem;
 }
 .dashboard-main .overview-container {
-  background: white;
+  background: #FFFFFF;
+  border-radius: 10px;
   padding: 1rem;
-  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(222, 222, 222, 0.7);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeIn 0.5s ease-in;
 }
 .dashboard-main .overview-container .overview-header {
   color: black;
@@ -168,25 +220,20 @@ body {
 }
 .dashboard-main .overview-container .overview {
   display: grid;
-  background: white;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  border-radius: 14px;
+  cursor: pointer;
 }
 .dashboard-main .overview-container .overview .title {
   color: black;
   font-size: 1.125rem;
-  font-style: normal;
   font-weight: 600;
   line-height: 24px;
 }
 .dashboard-main .overview-container .overview .value {
   color: black;
-  width: 100%;
   font-size: 1.75rem;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   letter-spacing: -2px;
   display: flex;
   justify-content: space-between;
@@ -211,8 +258,14 @@ body {
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(222, 222, 222, 0.7);
-  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dashboard-main .overview-container .overview .balance:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 .dashboard-main .overview-container .overview .balance .top {
   display: flex;
@@ -234,13 +287,11 @@ body {
   padding: 1.25rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(222, 222, 222, 0.7);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: pulse 2s ease-in-out infinite;
 }
-.dashboard-main .overview-container .overview .balance.highlight .title {
-  color: white;
-}
-.dashboard-main .overview-container .overview .balance.highlight .value {
-  color: #FFFFFF;
-}
+.dashboard-main .overview-container .overview .balance.highlight .title,
+.dashboard-main .overview-container .overview .balance.highlight .value,
 .dashboard-main .overview-container .overview .balance.highlight .description {
   color: #FFFFFF;
 }
@@ -250,10 +301,12 @@ body {
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(222, 222, 222, 0.7);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 1rem 0;
   min-height: 300px;
+  animation: fadeIn 0.5s ease-in;
 }
-.dashboard-main .analytics-header {
+.dashboard-main .analytics .analytics-header {
   color: black;
   font-size: 1.25rem;
   font-weight: 700;
@@ -261,12 +314,51 @@ body {
   opacity: 1;
   line-height: normal;
   margin-bottom: 0.5rem;
-  position: absolute;
+  display: flex;
+  justify-content: space-between;
+}
+.dashboard-main .analytics .analytics-right {
+  display: flex;
+  align-items: center;
+}
+.dashboard-main .analytics .analytics-right .labels {
+  display: flex;
+}
+.dashboard-main .analytics .analytics-right .labels .label1,
+.dashboard-main .analytics .analytics-right .labels .label2 {
+  color: black;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -1px;
+  opacity: 1;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.dashboard-main .analytics .analytics-right .labels .label1 span,
+.dashboard-main .analytics .analytics-right .labels .label2 span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+.dashboard-main .analytics .analytics-right select {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-left: 20px;
+  color: #7C7C7C;
 }
 
 .sidebar-right {
   grid-area: right;
   padding: 1rem;
+  animation: fadeIn 0.5s ease-in;
 }
 .sidebar-right .profile {
   background: #FFFFFF;
@@ -274,6 +366,7 @@ body {
   padding: 0.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(222, 222, 222, 0.7);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   max-width: 350px;
   margin: 0 auto;
@@ -286,16 +379,27 @@ body {
   display: flex;
   gap: 1rem;
 }
-.sidebar-right .profile .notification, .sidebar-right .profile .chat {
+.sidebar-right .profile .notification,
+.sidebar-right .profile .chat {
   border: none;
   background-color: transparent !important;
+  width: fit-content;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid #DEDEDE;
   padding: 0.5rem;
   border-radius: 80%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sidebar-right .profile .notification:hover,
+.sidebar-right .profile .chat:hover {
+  transform: translateY(-2px);
+  background: rgba(222, 222, 222, 0.2) !important;
 }
 .sidebar-right .profile .user {
   border: none;
   background-color: transparent !important;
+  width: fit-content;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -303,6 +407,12 @@ body {
 }
 .sidebar-right .profile .user img {
   border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sidebar-right .profile .user:hover img {
+  transform: scale(1.1);
 }
 .sidebar-right .recenttransaction,
 .sidebar-right .savingPlan {
@@ -311,14 +421,17 @@ body {
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(222, 222, 222, 0.7);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 1rem 0;
   min-height: 200px;
+  animation: fadeIn 0.5s ease-in;
 }
 .sidebar-right .recenttransaction .trans-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid rgba(222, 222, 222, 0.7);
-  padding: 1rem 0;
+  padding-bottom: 1rem;
 }
 .sidebar-right .recenttransaction .trans-header .trans-title {
   color: black;
@@ -335,31 +448,39 @@ body {
   letter-spacing: -1px;
   opacity: 0.5;
   line-height: normal;
+  font-size: 0.75rem;
 }
-.sidebar-right .recenttransaction .tran-method, .sidebar-right .recenttransaction .tran-amount {
+.sidebar-right .recenttransaction .tran-method,
+.sidebar-right .recenttransaction .tran-amount {
   color: black;
   font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: -1px;
   opacity: 1;
   line-height: 1.5rem;
+  margin: 0.25rem 0;
 }
 .sidebar-right .recenttransaction .trans-item {
   display: flex;
   padding: 1.25rem 0;
   justify-content: space-between;
+  animation: fadeIn 0.5s ease-in;
 }
 .sidebar-right .recenttransaction .trans-icon img {
   border-radius: 100%;
+  width: 40px;
+  height: 40px;
 }
 .sidebar-right .recenttransaction .trans-stat {
   display: flex;
   flex-direction: column;
+  gap: 0.25rem;
 }
 .sidebar-right .recenttransaction .trans-left {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  align-items: center;
 }
 .sidebar-right .recenttransaction .tran-status {
   color: #3BBB6E;
@@ -368,22 +489,33 @@ body {
   letter-spacing: -1px;
   opacity: 1;
   line-height: normal;
+  text-align: right;
 }
 .sidebar-right .recenttransaction .view-transaction {
   border: none;
   background-color: transparent !important;
+  width: fit-content;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: #4745A4;
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: -1px;
   opacity: 1;
   line-height: 1.5rem;
+  display: block;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sidebar-right .recenttransaction .view-transaction:hover {
+  color: #3BBB6E;
+  transform: translateY(-2px);
 }
 .sidebar-right .savingPlan .plan-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid rgba(222, 222, 222, 0.6980392157);
-  padding: 1rem 0;
+  padding-bottom: 1rem;
 }
 .sidebar-right .savingPlan .plan-header .plan-title {
   color: black;
@@ -400,19 +532,37 @@ body {
   letter-spacing: -1px;
   opacity: 1;
   line-height: 1.5rem;
+  margin-bottom: 0.25rem;
 }
 .sidebar-right .savingPlan .view-plan {
   border: none;
   background-color: transparent !important;
+  width: fit-content;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #4745A4;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -1px;
+  opacity: 1;
+  line-height: 1.5rem;
+  display: block;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sidebar-right .savingPlan .view-plan:hover {
+  color: #3BBB6E;
+  transform: translateY(-2px);
 }
 .sidebar-right .savingPlan .plan-stats {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
 }
 .sidebar-right .savingPlan .plan-detail {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding: 0.75rem 0;
   gap: 0.5rem;
 }
 .sidebar-right .savingPlan .plan-date {
@@ -422,10 +572,11 @@ body {
   letter-spacing: -1px;
   opacity: 0.5;
   line-height: normal;
+  font-size: 0.75rem;
 }
 .sidebar-right .savingPlan .plan-baseamount {
   color: black;
-  font-size: 0.75;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: -1px;
   opacity: 0.5;
@@ -438,12 +589,12 @@ body {
   letter-spacing: -1px;
   opacity: 1;
   line-height: normal;
+  margin-top: 0.25rem;
 }
 .sidebar-right .savingPlan .progress {
   background-color: #d8d8d8;
   border-radius: 20px;
   position: relative;
-  margin: 1rempx 0;
   height: 0.5rem;
   width: 18rem;
   margin: 0.5rem 0;
@@ -458,33 +609,18 @@ body {
 }
 .sidebar-right .savingPlan .progress-done {
   border-radius: 20px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
-  width: 0;
-  opacity: 0;
-  transition: 1s ease 0.3s;
+  animation: progress 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @media (max-width: 599px) {
   .dashboard-layout {
     grid-template-rows: auto 1fr auto;
   }
-  .sidebar-right {
-    padding: 1rem 0;
-  }
-  .value-style {
-    font-size: 24px;
-    letter-spacing: -1px;
-  }
 }
-@media (max-width: 400px) {
-  .dashboard-main {
-    padding: 1rem 0.5rem;
-  }
-  .card {
-    padding: 0.75rem;
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }/*# sourceMappingURL=style.css.map */

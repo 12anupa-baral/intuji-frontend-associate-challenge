@@ -41,9 +41,9 @@
             <div class="searchbar">
                 <i data-lucide="search" id="search-icon"></i>
                 <input class="search-input" name="search" placeholder="Search here..." />
-             
+
             </div>
-              
+
 
             <div class="overview-container">
                 <p class="overview-header">Overview</p>
@@ -52,22 +52,51 @@
                 </div>
             </div>
             <div class="analytics">
-                <p class="analytics-header">Analytics</p>
-                <canvas id="analyticsChart" width="600" height="300"></canvas>
+                <div class="analytics-header">
+                    <div class="analytics-left">
+                        <p>Analytics</p>
+                    </div>
+                    <div class="analytics-right">
+                        <div class="labels">
+                            <div class="label1">
+                                <span style="background-color: #4745A4;"></span>
+                                <p>Label1</p>
+                            </div>
+                            <div class="label2">
+                                <span style="background-color: #F8CD70;"></span>
+                                <p>Label2</p>
+                            </div>
+                        </div>
+                        <div>
+                            <select name="week" id="days">
+                                <option value="select">Weekly</option>
+                                <option value="sunday">Sunday</option>
+                                <option value="monday">Monday</option>
+                                <option value="tuesday">Tuesday</option>
+                                <option value="wednesday">Wednesday</option>
+                                <option value="thursday">Thursday</option>
+                                <option value="friday">Friday</option>
+                                <option value="saturday">Saturday</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
+                <div id="analyticsChart" style="width: 100%; height: 300px;"></div>
             </div>
+
         </section>
 
         <aside class="sidebar-right">
             <section class="profile">
                 <div class="profile-btns">
-                <button class="notification">
-                    <img src="assets/notification-bing.svg" alt="notification">
-                </button>
-                <button class="chat">
-                    <img src="assets/message-text.svg" alt="message">
-                </button>
-            </div>
+                    <button class="notification">
+                        <img src="assets/notification-bing.svg" alt="notification">
+                    </button>
+                    <button class="chat">
+                        <img src="assets/message-text.svg" alt="message">
+                    </button>
+                </div>
                 <button class="user">
                     <img src="https://placehold.co/40x40" alt="avatar">
                     <span>Mirie Kiritanie</span>
@@ -82,8 +111,7 @@
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-    </script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="script.js"></script>
 </body>
 
