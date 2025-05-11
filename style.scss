@@ -119,7 +119,7 @@ body {
         grid-template-columns: 200px 1fr;
     }
 
-    @media (min-width: 800px) {
+    @media (min-width: 1050px) {
         grid-template:
             "left header header" auto
             "left main right" 1fr / 280px 1fr minmax(300px, 347px);
@@ -233,8 +233,8 @@ body {
 // Main Content
 .dashboard-main {
     grid-area: main;
-    padding: $space;
     overflow-x: hidden;
+    padding: 1rem;
     animation: fadeIn 0.5s ease-in;
 
     .searchbar {
@@ -269,6 +269,7 @@ body {
     .overview-container {
         @include card;
         animation: fadeIn 0.5s ease-in;
+        margin-top: 1rem;
 
         .overview-header {
             @include text-style($color, 1, 700, 1.25rem);
@@ -278,7 +279,7 @@ body {
         .overview {
             display: grid;
             gap: $space;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             cursor: pointer;
 
             .title {
@@ -345,25 +346,31 @@ body {
                     color: $white;
                 }
             }
+
+            @media (min-width: 500px) {
+                grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            }
         }
     }
 
     .analytics {
         @include card;
-        margin: $space 0;
+        margin-top: 2rem;
         min-height: 300px;
         animation: fadeIn 0.5s ease-in;
 
         .analytics-header {
             @include text-style($color, 1, 700, 1.25rem);
-            margin-bottom: 0.5rem;
             display: flex;
+            align-items: center;
             justify-content: space-between;
         }
 
         .analytics-right {
             display: flex;
+            flex-direction: column;
             align-items: center;
+            gap: 1rem;
 
             .labels {
                 display: flex;
@@ -398,19 +405,22 @@ body {
                 color: #7C7C7C;
 
             }
+
+            @media (min-width: 550px) {
+                flex-direction: row;
+                padding: 2rem;
+            }
+
         }
+
     }
-
-
-
-
 
 }
 
 // Right Sidebar 
 .sidebar-right {
     grid-area: right;
-    padding: $space;
+    padding: 1rem 2rem 1rem 0;
     animation: fadeIn 0.5s ease-in;
 
     .profile {
@@ -465,7 +475,7 @@ body {
     .recenttransaction,
     .savingPlan {
         @include card();
-        margin: $space 0;
+        margin-top: 2rem;
         min-height: 200px;
         animation: fadeIn 0.5s ease-in;
     }
