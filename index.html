@@ -14,25 +14,27 @@
 
 <body>
     <main class="dashboard-layout">
-        <aside id="sidebar" class="sidebar-left">
+        <aside id="sidebar" class="sidebar-left sidebar-collapsed">
             <div class="sidebar-logo">
                 <img src="https://placehold.co/178x52" alt="Logo" />
             </div>
             <div class="sidebar-mobilelogo">
-                <img src="https://placehold.co/52x52" alt="Logo" />
+                <div class="toggle-btn" id="toggle-btn">
+                    <i data-lucide="menu"></i>
+            </div>
             </div>
             <ul>
-                <li><i data-lucide="layout-dashboard"></i><a href="#">Dashboard</a></li>
-                <li><i data-lucide="calendar-days"></i><a href="#">Schedule</a></li>
-                <li><i data-lucide="mail"></i><a href="#">Message</a></li>
-                <li><i data-lucide="chart-column"></i><a href="#">Analytics</a></li>
-                <li><i data-lucide="users-round"></i><a href="#">Team</a></li>
+                <li><i data-lucide="layout-dashboard"></i><a href="#" class="sidebartext">Dashboard</a></li>
+                <li><i data-lucide="calendar-days"></i><a href="#"  class="sidebartext">Schedule</a></li>
+                <li><i data-lucide="mail"></i><a href="#"  class="sidebartext">Message</a></li>
+                <li><i data-lucide="chart-column"></i><a href="#"  class="sidebartext">Analytics</a></li>
+                <li><i data-lucide="users-round"></i><a href="#"  class="sidebartext">Team</a></li>
                 <hr />
-                <li><i data-lucide="user-round"></i><a href="#">Profile</a></li>
-                <li><i data-lucide="bolt"></i><a href="#">Settings</a></li>
+                <li><i data-lucide="user-round"></i><a href="#"  class="sidebartext">Profile</a></li>
+                <li><i data-lucide="bolt"></i><a href="#"  class="sidebartext">Settings</a></li>
                 <div class="bottom-sidebar-items">
-                    <li><i data-lucide="info"></i><a href="#">Help</a></li>
-                    <li><i data-lucide="log-out"></i><a href="#">Logout</a></li>
+                    <li><i data-lucide="info"></i><a href="#"  class="sidebartext">Help</a></li>
+                    <li><i data-lucide="log-out"></i><a href="#"  class="sidebartext">Logout</a></li>
                 </div>
             </ul>
         </aside>

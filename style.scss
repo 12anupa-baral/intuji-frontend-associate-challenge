@@ -159,13 +159,17 @@ body {
         }
     }
 
+      
     .sidebar-logo {
-        padding: 1rem;
+        // padding: 1rem ;
         display: none;
 
         @media (min-width: 800px) {
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 2rem;
+            
         }
     }
 
@@ -193,7 +197,7 @@ body {
             padding: 1rem 2rem;
         }
 
-        a {
+        .sidebartext {
             display: none;
             color: #0D163A;
             text-decoration: none;
@@ -203,6 +207,7 @@ body {
                 font-size: 15px;
             }
         }
+
 
         &:hover {
             transform: translateX(5px);
@@ -234,7 +239,7 @@ body {
 .dashboard-main {
     grid-area: main;
     overflow-x: hidden;
-    padding: 1rem;
+    padding-right: 1rem;
     animation: fadeIn 0.5s ease-in;
 
     .searchbar {
@@ -414,13 +419,17 @@ body {
         }
 
     }
+        @media (min-width: 550px) {
+            padding: 1rem;
+        }
+
 
 }
 
 // Right Sidebar 
 .sidebar-right {
     grid-area: right;
-    padding: 1rem 2rem 1rem 0;
+    padding-right: 1rem;
     animation: fadeIn 0.5s ease-in;
 
     .profile {
@@ -627,6 +636,10 @@ body {
             animation: progress 1s $easing forwards;
         }
     }
+
+        @media (min-width: 550px) {
+            padding: 1rem 2rem 1rem 0;
+        }
 }
 
 // Responsive Styles
