@@ -198,6 +198,7 @@ savingplanData.forEach((data) => {
   progressDone.style.background = `${data.color}`;
 });
 
+// === Charts ===
 Highcharts.chart("analyticsChart", {
   chart: {
     type: "areaspline",
