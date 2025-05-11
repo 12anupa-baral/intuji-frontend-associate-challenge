@@ -46,7 +46,7 @@ body {
 }
 .sidebar-left ul hr {
   margin: 1rem;
-  opacity: 0.1;
+  opacity: 0.3;
 }
 .sidebar-left .sidebar-items {
   padding: 0.5rem;
@@ -84,7 +84,7 @@ body {
   border-left: 3px solid transparent;
   cursor: pointer;
 }
-@media (min-width: 800px) {
+@media (min-width: 600px) {
   .sidebar-left li {
     justify-content: flex-start;
     padding: 1rem 2rem;
@@ -95,7 +95,7 @@ body {
   color: #0D163A;
   text-decoration: none;
 }
-@media (min-width: 800px) {
+@media (min-width: 600px) {
   .sidebar-left li a {
     display: block;
     font-size: 15px;
@@ -113,19 +113,44 @@ body {
   height: 24px;
   flex-shrink: 0;
 }
+.sidebar-left .bottom-sidebar-items {
+  bottom: 1rem;
+  position: absolute;
+}
 
 .dashboard-main {
   grid-area: main;
   padding: 1rem;
   overflow-x: hidden;
 }
-.dashboard-main .search-input {
+.dashboard-main .searchbar {
+  position: relative;
+}
+.dashboard-main .searchbar .search-input {
   background: #FFFFFF;
   border-radius: 100px;
   padding: 0.75rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(222, 222, 222, 0.7);
+  color: #667085;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: -1px;
+  opacity: 1;
+  line-height: 1.5rem;
   margin-bottom: 1rem;
+  width: 100%;
+  padding: 1rem 3rem;
+}
+.dashboard-main .searchbar #search-icon {
+  position: absolute;
+  width: 1.25rem;
+  left: 0;
+  top: 35%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
 }
 .dashboard-main .overview-container {
   background: white;
@@ -228,6 +253,16 @@ body {
   margin: 1rem 0;
   min-height: 300px;
 }
+.dashboard-main .analytics-header {
+  color: black;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  opacity: 1;
+  line-height: normal;
+  margin-bottom: 0.5rem;
+  position: absolute;
+}
 
 .sidebar-right {
   grid-area: right;
@@ -236,12 +271,38 @@ body {
 .sidebar-right .profile {
   background: #FFFFFF;
   border-radius: 100px;
-  padding: 0.75rem;
+  padding: 0.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(222, 222, 222, 0.7);
   width: 100%;
   max-width: 350px;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  height: 3.5rem;
+}
+.sidebar-right .profile .profile-btns {
+  display: flex;
+  gap: 1rem;
+}
+.sidebar-right .profile .notification, .sidebar-right .profile .chat {
+  border: none;
+  background-color: transparent !important;
+  border: 1px solid #DEDEDE;
+  padding: 0.5rem;
+  border-radius: 80%;
+}
+.sidebar-right .profile .user {
+  border: none;
+  background-color: transparent !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+.sidebar-right .profile .user img {
+  border-radius: 100%;
 }
 .sidebar-right .recenttransaction,
 .sidebar-right .savingPlan {
@@ -309,14 +370,14 @@ body {
   line-height: normal;
 }
 .sidebar-right .recenttransaction .view-transaction {
+  border: none;
+  background-color: transparent !important;
   color: #4745A4;
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: -1px;
   opacity: 1;
   line-height: 1.5rem;
-  border: none;
-  background-color: white !important;
 }
 .sidebar-right .savingPlan .plan-header {
   display: flex;
@@ -341,14 +402,8 @@ body {
   line-height: 1.5rem;
 }
 .sidebar-right .savingPlan .view-plan {
-  color: #4745A4;
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: -1px;
-  opacity: 1;
-  line-height: 1.5rem;
   border: none;
-  background-color: white !important;
+  background-color: transparent !important;
 }
 .sidebar-right .savingPlan .plan-stats {
   display: flex;

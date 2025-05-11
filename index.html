@@ -38,7 +38,12 @@
         </aside>
 
         <section class="dashboard-main">
-            <section class="search-input">search</section>
+            <div class="searchbar">
+                <i data-lucide="search" id="search-icon"></i>
+                <input class="search-input" name="search" placeholder="Search here..." />
+             
+            </div>
+              
 
             <div class="overview-container">
                 <p class="overview-header">Overview</p>
@@ -46,11 +51,29 @@
 
                 </div>
             </div>
-            <div class="analytics">Analytics</div>
+            <div class="analytics">
+                <p class="analytics-header">Analytics</p>
+                <canvas id="analyticsChart" width="600" height="300"></canvas>
+
+            </div>
         </section>
 
         <aside class="sidebar-right">
-            <section class="profile">Profile</section>
+            <section class="profile">
+                <div class="profile-btns">
+                <button class="notification">
+                    <img src="assets/notification-bing.svg" alt="notification">
+                </button>
+                <button class="chat">
+                    <img src="assets/message-text.svg" alt="message">
+                </button>
+            </div>
+                <button class="user">
+                    <img src="https://placehold.co/40x40" alt="avatar">
+                    <span>Mirie Kiritanie</span>
+                    <i data-lucide="chevron-down"></i>
+                </button>
+            </section>
             <section class="savingPlan" id="savingPlan"></section>
             <section class="recenttransaction" id="transactions"></section>
 
@@ -59,6 +82,8 @@
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
     <script src="script.js"></script>
 </body>
 

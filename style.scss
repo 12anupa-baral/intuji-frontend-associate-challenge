@@ -37,10 +37,9 @@ $line-height: normal;
     line-height: $line-height
 }
 
-@mixin seeallbtn() {
-    @include text-style(#4745A4, 1, 500, 1rem, 1.5rem);
+@mixin btn() {
     border: none;
-    background-color: white !important;
+    background-color: transparent !important;
 }
 
 
@@ -97,7 +96,7 @@ body {
 
         hr {
             margin: 1rem;
-            opacity: 0.1;
+            opacity: 0.3;
         }
     }
 
@@ -137,7 +136,7 @@ body {
         border-left: 3px solid transparent;
         cursor: pointer;
 
-        @media (min-width: 800px) {
+        @media (min-width: 600px) {
             justify-content: flex-start;
             padding: 1rem 2rem;
         }
@@ -147,7 +146,7 @@ body {
             color: #0D163A;
             text-decoration: none;
 
-            @media (min-width: 800px) {
+            @media (min-width: 600px) {
                 display: block;
                 font-size: 15px;
             }
@@ -171,6 +170,11 @@ body {
         }
     }
 
+        .bottom-sidebar-items {
+                        bottom: 1rem;
+                        position: absolute;
+                    }
+
 
 }
 
@@ -179,11 +183,31 @@ body {
     grid-area: main;
     padding: $space;
     overflow-x: hidden;
+    .searchbar {
+            position: relative;
+    
+            .search-input {
+                @include card(0.75rem, $rounded-radius);
+                @include text-style(#667085, 1, 400, 1rem, 1.5rem);
+                margin-bottom: $space;
+                width: 100%;
+                padding: 1rem 3rem;
+    
+            }
+    
+            #search-icon {
+                position: absolute;
+                width:1.25rem;
+                left: 0;
+                top: 35%;
+                transform: translateY(-50%);
+                display: flex;
+                align-items: center;
+                margin-left: 1rem; 
+            }
+        }
 
-    .search-input {
-        @include card(0.75rem, $rounded-radius);
-        margin-bottom: $space;
-    }
+   
 
     .overview-container {
         background: white;
@@ -200,8 +224,8 @@ body {
             background: white;
             gap: $space;
             grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            // padding: $space;
             border-radius: 14px;
+
 
             .title {
                 color: black;
@@ -282,6 +306,12 @@ body {
         margin: $space 0;
         min-height: 300px;
     }
+
+    .analytics-header{
+        @include text-style($color, 1, 700, 1.25rem);
+            margin-bottom: 0.5rem;
+            position: absolute;
+    }
 }
 
 // Right Sidebar
@@ -290,10 +320,38 @@ body {
     padding: $space;
 
     .profile {
-        @include card(0.75rem, $rounded-radius);
+        @include card(0.5rem, $rounded-radius);
         width: 100%;
         max-width: 350px;
         margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        gap:0.5rem;
+        height:3.5rem;
+
+        .profile-btns{
+            display: flex;
+            gap:1rem;
+
+        }
+
+        .notification,.chat{
+                    @include btn();
+                    border:1px solid #DEDEDE;
+                    padding:0.5rem;
+                    border-radius: 80%
+        }
+                .user {
+                    @include btn();
+                    display:flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap:0.5rem
+                }
+
+                .user img {
+                      border-radius: 100%                   }
+
     }
 
     .recenttransaction,
@@ -353,7 +411,8 @@ body {
 
 
         .view-transaction {
-            @include seeallbtn()
+            @include btn();
+            @include text-style(#4745A4, 1, 500, 1rem, 1.5rem);
         }
     }
 
@@ -374,7 +433,7 @@ body {
         }
 
         .view-plan {
-            @include seeallbtn()
+            @include btn()
         }
 
         .plan-stats {

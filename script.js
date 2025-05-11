@@ -110,7 +110,9 @@ overviewData.forEach((data) => {
     <hr />
     <div class="value">
       <div>${data.amount}</div>
-      <i data-lucide="arrow-right"></i>
+      <div>
+      <i data-lucide="arrow-right">-</i>
+      </div>
     </div>
   `;
   overviewContainer.appendChild(block);
@@ -196,5 +198,81 @@ savingplanData.forEach((data) => {
   progressDone.style.background = `${data.color}`;
 });
 
-// === Initialize Lucide Icons ===
+
+// Analytics
+const ctx = document.getElementById("analyticsChart").getContext("2d");
+
+// Gradient for first dataset
+const gradient1 = ctx.createLinearGradient(0, 0, 0, 300);
+gradient1.addColorStop(0, "rgba(71, 69, 164, 0.2)");
+gradient1.addColorStop(1, "rgba(71, 69, 164, 0)");
+
+// Gradient for second dataset
+const gradient2 = ctx.createLinearGradient(0, 0, 0, 300);
+gradient2.addColorStop(0, "rgba(248, 205, 112, 0.2)");
+gradient2.addColorStop(1, "rgba(248, 205, 112, 0)");
+
+new Chart(ctx, {
+  type: "line",
+  data: {
+    labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    datasets: [
+      {
+        label: "Label1",
+        data: [15000, 13000, 10000, 12000, 18000, 11000, 16000],
+        borderColor: "#4745A4",
+        backgroundColor: gradient1,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 0,
+      },
+      {
+        label: "Label2",
+        data: [5000, 7000, 6000, 10000, 9000, 7000, 9500],
+        borderColor: "#F8CD70",
+        backgroundColor: gradient2,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 0,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: {
+        min: 0,
+        max: 20000,
+        afterBuildTicks: function (axis) {
+          axis.ticks = [0, 1000, 5000, 10000, 15000, 20000].map((value) => ({
+            value,
+          }));
+        },
+        ticks: {
+          callback: function (value) {
+            return `${value / 1000}k`;
+           
+          },
+          color: "#AAA",
+        },
+        grid: {
+          color: "rgba(0,0,0,0.05)",
+        },
+      },
+      x: {
+        ticks: {
+          color: "#AAA",
+        },
+        grid: {
+          display: false,
+        },
+      },
+    },
+  },
+
+});
+
+
+
+
 lucide.createIcons();
